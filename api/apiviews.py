@@ -6,7 +6,9 @@ from rest_framework.views import APIView
 from rest_framework import status, viewsets
 from rest_framework.response import Response
 from django.contrib.auth import authenticate
+from rest_framework.permissions import IsAuthenticated
 
+from .permissions import IsOwner
 from .models import Categoria, Producto, SubCategoria
 from .serializers import CategoriaSerializer, ProductoSerializer, \
     SubCategoriaSerializer, UserSerializer
@@ -41,6 +43,7 @@ class ProductoDetalle(generics.RetrieveDestroyAPIView):
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
+    permission_classes = ([IsAuthenticated, IsOwner])
 
 
 # COMMENT: CATEGORIA

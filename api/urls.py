@@ -7,7 +7,7 @@ from api.apiviews import CategoriaDetalle, CategoriaList, LoginView, \
         SubCategoriaList, UserCreate
 
 router = DefaultRouter()
-router.register('v2/productos/', ProductoViewSet, basename='productos')
+router.register('v2/productos', ProductoViewSet, basename='productos')
 
 urlpatterns = [
     path('v1/productos/', ProductoList.as_view(), name='producto_list'),
